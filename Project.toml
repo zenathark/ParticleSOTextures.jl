@@ -4,6 +4,12 @@ authors = ["Juan Carlos Galan Hernandez <jcgalanhlanh@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+CUDAdrv = "c5f51814-7f29-56b8-a69c-e4d8f6be1fde"
+CUDAnative = "be33ccc6-a3ff-5ff2-a52e-74243cff1e17"
+CuArrays = "3a865a2d-5b23-5a0f-bc46-62713ec82fae"
+GPUArrays = "0c68f7d7-f131-5f86-a1c3-88cf8149b2d7"
 IOLogging = "9ee9e592-2d2d-57f4-9c4b-95048a1bc2c4"
 Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

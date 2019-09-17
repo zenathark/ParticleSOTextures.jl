@@ -6,7 +6,6 @@ logger = IOLogger()
 oldGlobal = global_logger(logger)
 
 
-
 struct Particle
 	speed::Int
 	pos::NamedTuple{(:x, :y), Tuple{Int, Int}}
@@ -79,6 +78,5 @@ function coocurencepar!(dest::Array{Int, 3}, image, plist::ParticleList, start::
 	end
 	return nothing
 end
-
 
 end # module
