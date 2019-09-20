@@ -1,6 +1,6 @@
 module PSO
 
-using Logging, IOLogging
+using Logging, IOLogging, Base.Threads
 
 logger = IOLogger()
 oldGlobal = global_logger(logger)
@@ -75,6 +75,14 @@ function coocurencepar!(dest::Array{Int, 3}, image, plist::ParticleList, start::
 		dest[pidx, i,j] += 1
 		j = image[x-1,y-1]    #(-1, -1)
 		dest[pidx, i,j] += 1
+	end
+	return nothing
+end
+
+function run_parallel!(dest::Array{Int, 3}, image, plist::ParticleList)
+	amount = div((plist.size * size(plist.particles, 1)), nthreads())
+	@threads for i in 1:nthreads()
+		coocurencepar!(dest, image, plist, (i - 1) * amount + 1, amount)
 	end
 	return nothing
 end
