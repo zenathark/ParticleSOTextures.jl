@@ -5,6 +5,8 @@ struct Particle
     size::NamedTuple{(:w, :h),Tuple{Int,Int}}
 end
 
+Particle(x, y, size) = Particle(0, (x = x, y = y), (x = 0, y = 0, size))
+
 struct ParticleList
     particles::Array{Particle,1}
     size::Int
@@ -13,7 +15,15 @@ end
 struct CoocurrenceMatrix
     coocurrence::Array{UInt}
     Δq::Int
-    CoocurrenceMatrix(coocurrence, Δq) = Δq > 0 && ndims(coocurrence) == 2
 end
 
-CoocurrenceMatrix(Δq::UInt) = CoocurrenceMatrix(zeros(UInt, Δq, Δq), Δq)
+CoocurrenceMatrix(Δq) = CoocurrenceMatrix(zeros(UInt, Δq, Δq), Δq)
+
+struct CoocurrenceMatrixGroup
+    coocurrence::Array{UInt,3}
+    Δq::Int
+    particle_size::Int
+end
+
+CoocurrenceMatrixGroup(Δq, particle_size) = 
+    CoocurrenceMatrixGroup(zeros(UInt, particle_size, Δq, Δq), Δq, particle_size)
